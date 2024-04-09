@@ -5,7 +5,24 @@ interface AfficherResultatProps {
 }
 
 const AfficherResultat: React.FC<AfficherResultatProps> = ({ imc }) => {
-    return <div>Votre IMC est de: {imc.toFixed(2)}</div>;
+    let etat = "";
+    
+    if (imc < 18.5) {
+        etat = "maigre";
+    } else if (imc >= 18.5 && imc < 25) {
+        etat = "normal";
+    } else if (imc >= 25 && imc < 30) {
+        etat = "en surpoids";
+    } else {
+        etat = "obèse";
+    }
+
+    return (
+        <div>
+            <p>Votre IMC est de: {imc.toFixed(2)}</p>
+            <p>Vous êtes {etat}.</p>
+        </div>
+    );
 };
 
 export default AfficherResultat;
